@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+<script>
+
+function computerPlay() {
+
+let option = Math.floor(Math.random()*3);
+
+if (option === 0) return "Rock"
+else if (option === 1) return "Paper"
+else return "Scissors"
+
+}
+
+function playRound(playerSelection,computerSelection) {
+
+let player = playerSelection.toLowerCase();
+let computer = computerSelection.toLowerCase();
+
+if (player === "rock") {
+
+    if (computer === "rock") {return "It's a tie! Rock can't beat rock."}
+    else if (computer === "paper") {return "You lose! Paper beats rock."}
+    else {return "You win! Rock beats scissors."}
+}
+
+else if (player === "paper") {
+    if (computer === "rock") {return "You win! Paper beats rock."}
+    if (computer === "paper") {return "It's a tie! Paper can't beat paper"}
+    else {return "You lose! Scissors beats paper."}
+}
+
+else {
+    if (computer === "rock") {return "You lose! Rock beats scissors."}
+    else if (computer === "paper") {return "You win! Scissors beats paper."}
+    else {return "It's a tie! Scissors can't beat scissors."}
+}
+
+}
+
+function game(amount){
+    
+let scorePlayer = 0;
+let scoreComputer = 0;
+let i = 0;
+let outcome;
+
+while (i < amount) {
+
+
+let playerSelection = prompt("We're playing rock-paper-scissors. What's your choice?");
+
+
+outcome = playRound(playerSelection, computerSelection);
+console.log(outcome);
+if (outcome === "You win! Scissors beats paper." || outcome === "You win! Paper beats rock." || outcome === "You win! Rock beats scissors.") scorePlayer++;
+else if (outcome === "You lose! Paper beats rock." || outcome === "You lose! Scissors beats paper." || outcome === "You lose! Rock beats scissors.") scoreComputer++;
+
+i++;
+
+}
+
+if(scorePlayer > scoreComputer) return "Final Score: " + scorePlayer + " (user) " + " vs. " + scoreComputer + " (computer) // You're the winner!";
+else if (scoreComputer > scorePlayer) return "Final Score: " + scorePlayer + " (user) " + " vs. " + scoreComputer + " (computer) // You lost!";
+else return "Final Score: " + scorePlayer + " (user) " + " vs. " + scoreComputer + " (computer) // It's a tie!";
+}
+
+
+
+const computerSelection = computerPlay();
+
+console.log(game(5));
+
+
+
+
+
+</script>
+
+
+</html>
