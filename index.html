@@ -2,13 +2,17 @@
 
 <html>
 
-<body>
+<body style="text-align: center">
 
     <button id="rock">Rock</button>
     <button id="paper">Paper</button>
     <button id="scissors">Scissors</button>
-
+<br><br>
 <div id="container"></div>
+
+<h2 id="score"></h2>
+
+<p></p>
 
 <script>
 
@@ -49,11 +53,13 @@ else {
 
 }
 
+
+let scorePlayer = 0;
+let scoreComputer = 0;
+
 function game(hand){
 
     let amount = 1;    
-    let scorePlayer = 0;
-    let scoreComputer = 0;
     let i = 0;
     let outcome;
 
@@ -85,19 +91,20 @@ function game(hand){
 
         }
 
-    if(scorePlayer > scoreComputer) return "Final Score: " + scorePlayer +
-    " (user) " + " vs. " + scoreComputer + " (computer) // You're the winner!";
+        contenth2.textContent = scorePlayer + " : " + scoreComputer;
+        contentp.textContent = "your score : computer's score";
 
-    else if (scoreComputer > scorePlayer) return "Final Score: " 
+        if(scorePlayer === 5 && scoreComputer < 5) {
+
+alert("Final Score: " + scorePlayer +
+    " (user) " + " vs. " + scoreComputer + " (computer) // You're the winner!");
+        }
+    else if(scoreComputer === 5 && scorePlayer < 5) {
+            alert("Final Score: " 
     + scorePlayer + " (user) " + " vs. " + scoreComputer + 
-    " (computer) // You lost!";
-
-    else return "Final Score: " + scorePlayer + " (user) " + " vs. " 
-    + scoreComputer + " (computer) // It's a tie!";
+    " (computer) // You lost!");
     }
-
-
-
+};
 
 
 let rock = document.querySelector("#rock");
@@ -114,6 +121,22 @@ let scissors = document.querySelector("#scissors");
     scissors.addEventListener("click",function() {
         game("scissors");
     });
+
+
+    const container = document.querySelector('#score');
+
+const contenth2 = document.createElement('span');
+contenth2.classList.add('contenth2');
+
+container.appendChild(contenth2);
+
+
+const container2 = document.querySelector('p');
+
+const contentp = document.createElement('p');
+contentp.classList.add('contentp');
+
+container2.appendChild(contentp);
 
 
 
