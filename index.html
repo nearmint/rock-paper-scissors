@@ -56,6 +56,7 @@ else {
 
 let scorePlayer = 0;
 let scoreComputer = 0;
+let s = 0;
 
 function game(hand){
 
@@ -94,15 +95,19 @@ function game(hand){
         contenth2.textContent = scorePlayer + " : " + scoreComputer;
         contentp.textContent = "your score : computer's score";
 
-        if(scorePlayer === 5 && scoreComputer < 5) {
+       
 
-alert("Final Score: " + scorePlayer +
-    " (user) " + " vs. " + scoreComputer + " (computer) // You're the winner!");
+        if(scorePlayer === 5 && scoreComputer < 5 && s === 0) {
+
+            alert("Final Score: " + scorePlayer +
+            " (user) " + " vs. " + scoreComputer + " (computer) // You're the winner!");
+            s = 5;
         }
-    else if(scoreComputer === 5 && scorePlayer < 5) {
-            alert("Final Score: " 
-    + scorePlayer + " (user) " + " vs. " + scoreComputer + 
-    " (computer) // You lost!");
+    else if(scoreComputer === 5 && scorePlayer < 5 && s === 0) {
+        alert("Final Score: " 
+        + scorePlayer + " (user) " + " vs. " + scoreComputer + 
+        " (computer) // You lost!");
+        s = 5;
     }
 };
 
