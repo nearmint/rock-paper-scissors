@@ -34,21 +34,21 @@ let computer = computerSelection.toLowerCase();
 
 if (player === "rock") {
 
-    if (computer === "rock") {return "It's a tie! Rock can't beat rock."}
-    else if (computer === "paper") {return "You lose! Paper beats rock."}
-    else {return "You win! Rock beats scissors."}
+    if (computer === "rock") {return "Opponent also selected rock. It's a tie!"}
+    else if (computer === "paper") {return "Opponent selected paper. You lose!"}
+    else {return "Opponent selected scissors. You win!"}
 }
 
 else if (player === "paper") {
-    if (computer === "rock") {return "You win! Paper beats rock."}
-    if (computer === "paper") {return "It's a tie! Paper can't beat paper."}
-    else {return "You lose! Scissors beats paper."}
+    if (computer === "rock") {return "Opponent selected rock. You win!"}
+    if (computer === "paper") {return "Opponent selected paper. It's a tie!"}
+    else {return "Opponent selected scissors. You lose!"}
 }
 
 else {
-    if (computer === "rock") {return "You lose! Rock beats scissors."}
-    else if (computer === "paper") {return "You win! Scissors beats paper."}
-    else {return "It's a tie! Scissors can't beat scissors."}
+    if (computer === "rock") {return "Opponent selected rock. You lose!"}
+    else if (computer === "paper") {return "Opponent selected paper. You win!"}
+    else {return "Opponent selected scissors. It's a tie!"}
 }
 
 }
@@ -85,8 +85,8 @@ function game(hand){
         container.appendChild(content);
 
 
-        if (outcome === "You win! Scissors beats paper." || outcome === "You win! Paper beats rock." || outcome === "You win! Rock beats scissors.") scorePlayer++;
-        else if (outcome === "You lose! Paper beats rock." || outcome === "You lose! Scissors beats paper." || outcome === "You lose! Rock beats scissors.") scoreComputer++;
+        if (outcome === "Opponent selected scissors. You win!" || outcome === "Opponent selected rock. You win!" || outcome === "Opponent selected paper. You win!") scorePlayer++;
+        else if (outcome === "Opponent selected paper. You lose!" || outcome === "Opponent selected scissors. You lose!" || outcome === "Opponent selected rock. You lose!") scoreComputer++;
 
         i++;
 
@@ -100,12 +100,11 @@ function game(hand){
         if(scorePlayer === 5 && scoreComputer < 5 && s === 0) {
 
             alert("Final Score: " + scorePlayer +
-            " (user) " + " vs. " + scoreComputer + " (computer) // You're the winner!");
+            " (user) " + "vs. " + scoreComputer + " (computer) // You're the winner!");
             s = 5;
         }
     else if(scoreComputer === 5 && scorePlayer < 5 && s === 0) {
-        alert("Final Score: " 
-        + scorePlayer + " (user) " + " vs. " + scoreComputer + 
+        alert("Final Score: " + scorePlayer + " (user)" + " vs. " + scoreComputer + 
         " (computer) // You lost!");
         s = 5;
     }
