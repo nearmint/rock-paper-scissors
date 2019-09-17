@@ -2,7 +2,16 @@
 
 <html>
 
+<body>
+
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+
+<div id="container"></div>
+
 <script>
+
 
 function computerPlay() {
 
@@ -40,44 +49,76 @@ else {
 
 }
 
-function game(amount){
-    
-let scorePlayer = 0;
-let scoreComputer = 0;
-let i = 0;
-let outcome;
+function game(hand){
 
-while (i < amount) {
+    let amount = 1;    
+    let scorePlayer = 0;
+    let scoreComputer = 0;
+    let i = 0;
+    let outcome;
+
+    let computerSelection = computerPlay();
+
+    let playerSelection = hand;
 
 
-let playerSelection = prompt("Please enter 'rock', 'paper', or 'scissors' to play");
-
-
-outcome = playRound(playerSelection, computerSelection);
-console.log(outcome);
-if (outcome === "You win! Scissors beats paper." || outcome === "You win! Paper beats rock." || outcome === "You win! Rock beats scissors.") scorePlayer++;
-else if (outcome === "You lose! Paper beats rock." || outcome === "You lose! Scissors beats paper." || outcome === "You lose! Rock beats scissors.") scoreComputer++;
-
-i++;
-
-}
-
-if(scorePlayer > scoreComputer) return "Final Score: " + scorePlayer + " (user) " + " vs. " + scoreComputer + " (computer) // You're the winner!";
-else if (scoreComputer > scorePlayer) return "Final Score: " + scorePlayer + " (user) " + " vs. " + scoreComputer + " (computer) // You lost!";
-else return "Final Score: " + scorePlayer + " (user) " + " vs. " + scoreComputer + " (computer) // It's a tie!";
-}
+    while (i < amount) {
 
 
 
-const computerSelection = computerPlay();
+        outcome = playRound(playerSelection, computerSelection);
+        
 
-console.log(game(5));
+        const container = document.querySelector('#container');
+
+        const content = document.createElement('div');
+        content.classList.add('content');
+        content.textContent = outcome;
+
+        container.appendChild(content);
 
 
+        if (outcome === "You win! Scissors beats paper." || outcome === "You win! Paper beats rock." || outcome === "You win! Rock beats scissors.") scorePlayer++;
+        else if (outcome === "You lose! Paper beats rock." || outcome === "You lose! Scissors beats paper." || outcome === "You lose! Rock beats scissors.") scoreComputer++;
+
+        i++;
+
+        }
+
+    if(scorePlayer > scoreComputer) return "Final Score: " + scorePlayer +
+    " (user) " + " vs. " + scoreComputer + " (computer) // You're the winner!";
+
+    else if (scoreComputer > scorePlayer) return "Final Score: " 
+    + scorePlayer + " (user) " + " vs. " + scoreComputer + 
+    " (computer) // You lost!";
+
+    else return "Final Score: " + scorePlayer + " (user) " + " vs. " 
+    + scoreComputer + " (computer) // It's a tie!";
+    }
+
+
+
+
+
+let rock = document.querySelector("#rock");
+    rock.addEventListener("click",function() {
+        game("rock");
+    }, false);
+
+let paper = document.querySelector("#paper");
+    paper.addEventListener("click",function() {
+        game("paper");
+    }, false);
+
+let scissors = document.querySelector("#scissors");
+    scissors.addEventListener("click",function() {
+        game("scissors");
+    });
 
 
 
 </script>
 
+</body>
 
 </html>
